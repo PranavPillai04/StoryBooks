@@ -19,4 +19,19 @@ module.exports = {
   stripTags: function (input) {
     return input.replace(/<(?:.|\n)*?>/gm, "");
   },
+  // floating below is to tell Materialize to float the button to the right,
+  //      unless it is on single card view
+  editIcon: function (storyUser, loggedUser, storyId, floating = true) {
+    // if current user is the author of the card, they can edit it
+    if (storyUser._id.toString() == loggedUser._id.toString()) {
+      if (floating) {
+        return `<a href="/stories/edit/${storyId}" class="btn-floating 
+        halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`;
+      } else {
+        return `<a href="/stories/edit/${storyId}"><i class="fas fa-edit"></i></a>`;
+      }
+    } else {
+      return "";
+    }
+  },
 };
