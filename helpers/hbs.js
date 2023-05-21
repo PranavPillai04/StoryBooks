@@ -34,4 +34,17 @@ module.exports = {
       return "";
     }
   },
+  //   From StackOverflow to select the correct option in the dropdown:
+  select: function (selected, options) {
+    return options
+      .fn(this)
+      .replace(
+        new RegExp(' value="' + selected + '"'),
+        '$& selected="selected"'
+      )
+      .replace(
+        new RegExp(">" + selected + "</option>"),
+        ' selected="selected"$&'
+      );
+  },
 };
