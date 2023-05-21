@@ -58,6 +58,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Set global variable
+app.use(function (req, res, next) {
+  // res.locals.user = req.user || null; // deprecated
+  res.locals.user = req.user ? req.user.toJSON() : null;
+  next();
+});
+
 // Static folder
 app.use(express.static(path.join(__dirname, "public")));
 

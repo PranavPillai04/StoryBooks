@@ -4,11 +4,13 @@
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          {{! @TODO editIcon }}
+            {{!-- Triple curly brace is necessary to parse HTML --}}
+            {{{editIcon user ../user _id}}} {{! Pass in the author, user, and story id }}
         </div>
         <div class="card-content center-align">
           <h5>{{title}}</h5>
-          <p>{{body}}</p>
+          {{! First truncate the body, then strip the tags from the truncated body }}
+          <p>{{stripTags (truncate body 150)}}</p>
           <br />
           <div class="chip">
             <img src="{{user.image}}" alt="" />
