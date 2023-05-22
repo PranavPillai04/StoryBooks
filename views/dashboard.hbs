@@ -9,6 +9,7 @@
         <th>Date</th>
         <th>Status</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,10 +20,20 @@
           <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
           <td><span class="dash-status">{{status}}</span></td>
           {{! Edit and Delete buttons }}
-          <td>
-            <a href="/stories/edit/{{_id}}" class="btn btn-float">
+
+          <td style="margin-right: 10px; width: 0;">
+            <a href="/stories/edit/{{_id}}" class="btn">
               <i class="fas fa-edit"></i>
             </a>
+          </td>
+
+          <td style="width: 75;">
+            <form action="/stories/{{_id}}" method="POST" id="delete-form">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="btn red btn-float">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
           </td>
         </tr>
       {{/each}}
