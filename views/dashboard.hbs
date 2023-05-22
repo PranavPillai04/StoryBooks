@@ -18,7 +18,7 @@
           <td><a href="/stories/{{_id}}">{{title}}</a></td>
           {{! Moment JS below for formatting date }}
           <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
-          <td><span class="dash-status">{{status}}</span></td>
+          <td><span class="dash-status">{{capitalize status}}</span></td>
           {{! Edit and Delete buttons }}
 
           <td style="margin-right: 10px; width: 0;">

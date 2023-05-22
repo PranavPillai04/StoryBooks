@@ -49,13 +49,14 @@ const {
   truncate,
   editIcon,
   select,
+  capitalize,
 } = require("./helpers/hbs");
 
 // Handlebars
 app.engine(
   ".hbs",
   exphbs.engine({
-    helpers: { formatDate, stripTags, truncate, editIcon, select },
+    helpers: { formatDate, stripTags, truncate, editIcon, select, capitalize },
     defaultLayout: "main",
     extname: ".hbs",
   })
