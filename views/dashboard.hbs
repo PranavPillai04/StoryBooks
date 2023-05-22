@@ -18,7 +18,12 @@
           {{! Moment JS below for formatting date }}
           <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
           <td><span class="dash-status">{{status}}</span></td>
-          <td></td>
+          {{! Edit and Delete buttons }}
+          <td>
+            <a href="/stories/edit/{{_id}}" class="btn btn-float">
+              <i class="fas fa-edit"></i>
+            </a>
+          </td>
         </tr>
       {{/each}}
     </tbody>
