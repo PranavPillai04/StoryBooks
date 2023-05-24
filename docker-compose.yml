@@ -1,0 +1,34 @@
+version: "3"
+services:
+  # For each service, you can either build or pull from image
+  api-server:
+    build: ./
+    env_file: ./config/config.env
+    # port 3000 on localhost will foward to port 3000 on container
+    ports:
+      - "3000:3000"
+    networks:
+      - storybooks-app
+    # Mongo needs to be running for the app to connect
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6-xenial
+    environment:
+      - MONGO_INITDB_DATABASE=storybooks
+    ports:
+      - "27017:27017"
+    networks:
+      - storybooks-app
+    # default location for mongoDB to store its data
+    volumes:
+      - mongo-data:/data/db
+
+# Connect the services together
+networks:
+  storybooks-app:
+    driver: bridge
+# Volume makes sure we have access to data even after restarts
+volumes:
+  mongo-data:
+    driver: local
