@@ -24,3 +24,11 @@ terraform-init:
 	cd terraform && \
 		terraform workspace select $(ENV) && \
 		terraform init
+
+# Needed to add Compute Network Admin to terraform-sa service account on GCS Console to make this work
+terraform-plan:
+	cd terraform && \
+		terraform workspace select $(ENV) && \
+		terraform plan \
+		-var-file='./environments/common.tfvars' \
+		-var-file='./environments/${ENV}/config.tfvars' \
