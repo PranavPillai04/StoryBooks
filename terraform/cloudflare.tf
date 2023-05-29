@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-      version = "~> 3.0"
-    }
-  }
-}
-
 # https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs
 provider "cloudflare" {
   api_token = var.cloudflare_api_token

@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 3.38"
-    }
-  }
-}
-
 # Get from https://registry.terraform.io/providers/hashicorp/google/latest/docs
 # (Just Google terraform gcp provider)
 provider "google" {
@@ -53,7 +44,7 @@ data "google_compute_image" "cos_image" {
   # container-optimzed OS, made by google to run containers
   # However, it does not have a package manager, so unable to install software onto instance
   # Configuration will need to be on container-level
-  family  = "cos-81-lts"
+  family  = "cos-105-lts"
   project = "cos-cloud"
 }
 
